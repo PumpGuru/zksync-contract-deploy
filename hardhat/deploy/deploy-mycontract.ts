@@ -38,15 +38,15 @@ export default async function (hre: HardhatRuntimeEnvironment) {
   const deployedFactoryContract = await deployer.deploy(factoryArtifact);
 
   // From the factory contract, deploy the MyContract contract using the 4 different methods.
-  const createTx: TransactionReceipt = await (await deployedFactoryContract.createMyContract()).wait();
+  // const createTx: TransactionReceipt = await (await deployedFactoryContract.createMyContract()).wait();
   // const create2Tx: TransactionReceipt = await (await deployedFactoryContract.create2MyContract(randomBytes(32),)).wait(); // random salt
   // const createAssemblyTx: TransactionReceipt = await (await deployedFactoryContract.createMyContractAssembly()).wait();
   // const create2AssemblyTx: TransactionReceipt = await (await deployedFactoryContract.create2MyContractAssembly(randomBytes(32))).wait(); // random salt
 
   console.log(
-    `Deployed ${factoryArtifact.contractName} at ${await deployedFactoryContract.getAddress()} 🚀
-      ✅ Deployed new contract via factory using create: ${createTx.contractAddress}     
+    `Deployed ${factoryArtifact.contractName} at ${await deployedFactoryContract.getAddress()} 🚀     
     `
+    // ✅ Deployed new contract via factory using create: ${createTx.contractAddress}
     // ✅ Deployed new contract via factory using create (with assembly): ${createAssemblyTx.contractAddress} 
     // ✅ Deployed new contract via factory using create2: ${create2Tx.contractAddress}
     // ✅ Deployed new contract via factory using create2 (with assembly): ${create2AssemblyTx.contractAddress}
